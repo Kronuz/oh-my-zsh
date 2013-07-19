@@ -51,7 +51,7 @@ zstyle '*' single-ignored show
 
 if [ "x$COMPLETION_WAITING_DOTS" = "xtrue" ]; then
   expand-or-complete-with-dots() {
-    echo -n "\e[31m......\e[0m"
+    echo -n "\e[1;30m...\e[0m"
     zle expand-or-complete
     zle redisplay
   }
