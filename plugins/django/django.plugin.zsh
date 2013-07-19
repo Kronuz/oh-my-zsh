@@ -173,8 +173,8 @@ _managepy-validate() {
 
 _managepy-commands() {
   local -a commands
-  
-  commands=(
+  commands=(`./manage.py help --commands`)
+  commands_help=(
     'adminindex:prints the admin-index template snippet for the given app name(s).'
     'createcachetable:creates the table needed to use the SQL cache backend.'
     'collectstatic:Collect static files in a single location.'
@@ -205,7 +205,8 @@ _managepy-commands() {
     'testserver:Runs a development server with data from the given fixture(s).'
     'validate:Validates all installed models.'
   )
-  
+  # typeset -A commands_help_map
+  # commands_help_map=($(echo ${(s,:,)commands_help[@]}))
   _describe -t commands 'manage.py command' commands && ret=0
 }
 
